@@ -1,0 +1,168 @@
+import { UserProfile, Workout, TimeRangeData, GoalItem } from '../types';
+
+export const initialProfile: UserProfile = {
+  name: 'Alex Kim',
+  initials: 'AK',
+  memberSince: 'Jan 2025',
+  totalWorkouts: 128,
+  streakDays: 7,
+  achievementsCount: 12,
+  dailyGoalPercent: 72,
+  steps: 8240,
+  stepsTarget: 10000,
+  calories: 512,
+  caloriesTarget: 700,
+  waterLiters: 1.4,
+  waterTargetLiters: 2.0,
+};
+
+export const mockWorkouts: Workout[] = [
+  {
+    id: 'w1',
+    title: 'Full Body Burn',
+    category: 'strength',
+    durationMinutes: 45,
+    caloriesBurned: 410,
+    exercisesCount: 10,
+    difficulty: 'Intermediate',
+    featured: true,
+    exercises: [
+      { id: 'e1', name: 'Barbell Squats', sets: 4, reps: 10 },
+      { id: 'e2', name: 'Push-ups', sets: 3, reps: 15 },
+      { id: 'e3', name: 'Dumbbell Lunge', sets: 3, reps: 12 },
+      { id: 'e4', name: 'Plank Hold', sets: 3, reps: 60 },
+    ],
+  },
+  {
+    id: 'w2',
+    title: 'Upper Body Strength',
+    category: 'strength',
+    durationMinutes: 32,
+    caloriesBurned: 280,
+    exercisesCount: 8,
+    difficulty: 'Intermediate',
+    exercises: [
+      { id: 'e5', name: 'Barbell Bench Press', sets: 4, reps: 10 },
+      { id: 'e6', name: 'Incline Dumbbell Press', sets: 3, reps: 12 },
+      { id: 'e7', name: 'Seated Shoulder Press', sets: 4, reps: 8 },
+      { id: 'e8', name: 'Tricep Dips', sets: 3, reps: 15 },
+    ],
+  },
+  {
+    id: 'w3',
+    title: 'HIIT Cardio Blast',
+    category: 'cardio',
+    durationMinutes: 20,
+    caloriesBurned: 240,
+    exercisesCount: 6,
+    difficulty: 'Advanced',
+    exercises: [
+      { id: 'e9', name: 'Burpees', sets: 4, reps: 45 },
+      { id: 'e10', name: 'Mountain Climbers', sets: 4, reps: 45 },
+      { id: 'e11', name: 'Jumping Jacks', sets: 4, reps: 60 },
+    ],
+  },
+  {
+    id: 'w4',
+    title: 'Zen Yoga Flow',
+    category: 'yoga',
+    durationMinutes: 25,
+    caloriesBurned: 140,
+    exercisesCount: 5,
+    difficulty: 'Beginner',
+    exercises: [
+      { id: 'e12', name: 'Sun Salutation A', sets: 3, reps: 5 },
+      { id: 'e13', name: 'Warrior II Pose', sets: 2, reps: 30 },
+      { id: 'e14', name: 'Child Pose Stretch', sets: 1, reps: 120 },
+    ],
+  },
+  {
+    id: 'w5',
+    title: 'Core & Mobility',
+    category: 'mobility',
+    durationMinutes: 15,
+    caloriesBurned: 110,
+    exercisesCount: 4,
+    difficulty: 'Beginner',
+    exercises: [
+      { id: 'e15', name: 'Abdominal Crunches', sets: 3, reps: 20 },
+      { id: 'e16', name: 'Cat-Cow Mobility Stretch', sets: 2, reps: 10 },
+      { id: 'e17', name: 'Russian Twists', sets: 3, reps: 20 },
+    ],
+  },
+];
+
+export const mockProgressRanges: Record<'week' | 'month' | 'year', TimeRangeData> = {
+  week: {
+    distance: '42.6',
+    unit: 'km',
+    trend: '+12%',
+    bars: [
+      { label: 'S', heightPercent: 45 },
+      { label: 'M', heightPercent: 60 },
+      { label: 'T', heightPercent: 38 },
+      { label: 'W', heightPercent: 72 },
+      { label: 'T', heightPercent: 55 },
+      { label: 'F', heightPercent: 90 },
+      { label: 'S', heightPercent: 65, isToday: true },
+    ],
+  },
+  month: {
+    distance: '168',
+    unit: 'km',
+    trend: '+8%',
+    bars: [
+      { label: 'W1', heightPercent: 50 },
+      { label: 'W2', heightPercent: 65 },
+      { label: 'W3', heightPercent: 42 },
+      { label: 'W4', heightPercent: 58 },
+      { label: 'W5', heightPercent: 70 },
+      { label: 'W6', heightPercent: 48 },
+      { label: 'W7', heightPercent: 80, isToday: true },
+    ],
+  },
+  year: {
+    distance: '1,240',
+    unit: 'km',
+    trend: '+22%',
+    bars: [
+      { label: 'J', heightPercent: 40 },
+      { label: 'F', heightPercent: 55 },
+      { label: 'M', heightPercent: 60 },
+      { label: 'A', heightPercent: 72 },
+      { label: 'M', heightPercent: 66 },
+      { label: 'J', heightPercent: 84 },
+      { label: 'J', heightPercent: 90, isToday: true },
+    ],
+  },
+};
+
+export const mockGoals: GoalItem[] = [
+  {
+    id: 'g1',
+    title: 'Steps goal',
+    currentText: '8,240',
+    targetText: '10,000',
+    percent: 82,
+    color: 'coral',
+    icon: 'footprints',
+  },
+  {
+    id: 'g2',
+    title: 'Water goal',
+    currentText: '1.4L',
+    targetText: '2.0L',
+    percent: 70,
+    color: 'sky',
+    icon: 'droplet',
+  },
+  {
+    id: 'g3',
+    title: 'Workout goal',
+    currentText: '5 sessions',
+    targetText: '6 sessions',
+    percent: 83,
+    color: 'sage',
+    icon: 'target',
+  },
+];
