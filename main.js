@@ -3,7 +3,6 @@ const path = require('path');
 
 /**
  * Gyrox Desktop Application Entry
- * Lead Architect: Tariq St. Patrick
  */
 function createWindow() {
   const win = new BrowserWindow({

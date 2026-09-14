@@ -67,7 +67,7 @@ The output executable will be created at `dist/Gyrox-win32-x64/Gyrox.exe`.
 ## 📁 Repository Structure
 
 ```
-├── index.html              # Main web application & mobile UI (Architect: Tariq St. Patrick)
+├── index.html              # Main web application & mobile UI
 ├── main.js                 # Electron main process entry point
 ├── package.json            # Dependencies and npm scripts
 ├── dist/                   # Packaged Windows desktop app (.exe)
