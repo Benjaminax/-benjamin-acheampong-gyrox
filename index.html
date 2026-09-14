@@ -3,35 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gyrox — Fitness & Wellness App Prototype</title>
+<title>Gyrox — Fitness &amp; Wellness System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* ───────────── CUSTOM SCROLLBAR (THEME SCROLLBAR) ───────────── */
+  /* Gyrox Engine Architecture | Dev: Tariq St. Patrick */
   * {
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
   }
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.22);
-    border-radius: 100px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--gx-green);
-  }
-  ::-webkit-scrollbar-corner {
-    background: transparent;
-  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.22); border-radius: 100px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gx-green); }
+  ::-webkit-scrollbar-corner { background: transparent; }
 
-  /* ───────────── GYROX DESIGN SYSTEM ───────────── */
   :root {
     --gx-black:   #121212;
     --gx-dark:    #181818;
@@ -85,23 +72,17 @@
     box-shadow: 0 0 60px rgba(0,0,0,0.8);
   }
 
-  /* Dark scrim behind the navbar so bright content never bleeds through */
   .screen-frame::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 110px;
-    background: linear-gradient(
-      0deg,
-      rgba(0,0,0,0.82) 0%,
-      rgba(0,0,0,0.45) 55%,
-      transparent 100%
-    );
+    background: linear-gradient(0deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.45) 55%, transparent 100%);
     pointer-events: none;
     z-index: 5;
   }
 
-  /* ───────────── GYROX SPLASH SCREEN ───────────── */
+  /* Splash Screen Component */
   .splash-screen {
     position: absolute;
     inset: 0;
@@ -187,32 +168,20 @@
       inset 0 -1px 0 rgba(255,255,255,0.08),
       inset 0 0 4px 2px rgba(255,255,255,0.06);
   }
-  /* Top edge light beam */
   .tabbar::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,0.75),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.75), transparent);
     pointer-events: none;
   }
-  /* Left edge highlight */
   .tabbar::after {
     content: '';
     position: absolute;
     top: 0; left: 0;
     width: 1px; height: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(255,255,255,0.7),
-      transparent,
-      rgba(255,255,255,0.2)
-    );
+    background: linear-gradient(180deg, rgba(255,255,255,0.7), transparent, rgba(255,255,255,0.2));
     pointer-events: none;
   }
   .navbtn {
@@ -315,7 +284,6 @@
     font-size: 10px; font-weight: 700; cursor: pointer;
   }
 
-  /* Workout card — real photo images */
   .workout-card {
     position: relative; border-radius: var(--r-xl); overflow: hidden;
     margin-bottom: 20px; cursor: pointer;
@@ -398,24 +366,12 @@
   .w-info { flex: 1; min-width: 0; }
   .w-info p { font-size: 13.5px; font-weight: 600; }
   .w-info span { font-size: 11.5px; color: var(--ink-soft); }
-  .chev { color: var(--ink-faint); flex-shrink: 0; }
 
-  .segmented {
-    display: flex; background: var(--gx-dark); border: 1px solid var(--gx-line);
-    border-radius: 100px; padding: 3px; margin-bottom: 16px;
-  }
-  .seg {
-    flex: 1; border: none; background: none; padding: 8px 0;
-    border-radius: 100px; font-size: 12px; font-weight: 700;
-    color: var(--ink-soft); cursor: pointer;
-  }
+  .segmented { display: flex; background: var(--gx-dark); border: 1px solid var(--gx-line); border-radius: 100px; padding: 3px; margin-bottom: 16px; }
+  .seg { flex: 1; border: none; background: none; padding: 8px 0; border-radius: 100px; font-size: 12px; font-weight: 700; color: var(--ink-soft); cursor: pointer; }
   .seg.active { background: var(--gx-green); color: #000; }
 
-  .summary-card {
-    display: flex; justify-content: space-between; align-items: center;
-    background: var(--gx-dark); border: 1px solid var(--gx-line);
-    border-radius: var(--r-lg); padding: 16px 18px; margin-bottom: 16px;
-  }
+  .summary-card { display: flex; justify-content: space-between; align-items: center; background: var(--gx-dark); border: 1px solid var(--gx-line); border-radius: var(--r-lg); padding: 16px 18px; margin-bottom: 16px; }
   .summary-label { font-size: 12px; color: var(--ink-soft); margin-bottom: 4px; }
   .summary-value { font-size: 26px; font-weight: 800; }
   .summary-value small { font-size: 13px; font-weight: 600; color: var(--ink-soft); }
@@ -428,11 +384,7 @@
   .mini-num { font-size: 15px; font-weight: 800; }
   .mini-label { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
 
-  .goal-row {
-    display: flex; align-items: center; gap: 12px;
-    background: var(--gx-dark); border: 1px solid var(--gx-line);
-    border-radius: var(--r-lg); padding: 14px; margin-bottom: 8px;
-  }
+  .goal-row { display: flex; align-items: center; gap: 12px; background: var(--gx-dark); border: 1px solid var(--gx-line); border-radius: var(--r-lg); padding: 14px; margin-bottom: 8px; }
   .goal-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--gx-green-dim); color: var(--gx-green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .goal-body { flex: 1; }
   .goal-top { display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 600; margin-bottom: 8px; }
@@ -440,11 +392,7 @@
   .progress-track { height: 4px; background: rgba(255,255,255,0.08); border-radius: 100px; overflow: hidden; }
   .progress-fill { height: 100%; width: 0%; background: var(--gx-green); border-radius: 100px; transition: width 1s cubic-bezier(.4,0,.2,1); }
 
-  .profile-card {
-    background: var(--gx-dark); border: 1px solid var(--gx-line);
-    border-radius: var(--r-xl); padding: 24px 18px 20px;
-    text-align: center; margin-bottom: 20px;
-  }
+  .profile-card { background: var(--gx-dark); border: 1px solid var(--gx-line); border-radius: var(--r-xl); padding: 24px 18px 20px; text-align: center; margin-bottom: 20px; }
   .profile-name { font-size: 17px; font-weight: 800; }
   .profile-sub { font-size: 12px; color: var(--ink-soft); margin: 3px 0 18px; }
   .profile-stats { display: flex; justify-content: space-around; padding-top: 14px; border-top: 1px solid var(--gx-line); }
@@ -452,11 +400,7 @@
   .profile-stats span { font-size: 11px; color: var(--ink-soft); }
 
   .list-card { background: var(--gx-dark); border: 1px solid var(--gx-line); border-radius: var(--r-lg); margin-bottom: 18px; overflow: hidden; }
-  .list-row {
-    display: flex; align-items: center; gap: 12px;
-    padding: 13px 14px; width: 100%; background: none; border: none;
-    border-bottom: 1px solid var(--gx-line); cursor: pointer; text-align: left; color: var(--ink);
-  }
+  .list-row { display: flex; align-items: center; gap: 12px; padding: 13px 14px; width: 100%; background: none; border: none; border-bottom: 1px solid var(--gx-line); cursor: pointer; text-align: left; color: var(--ink); }
   .list-row:last-child { border-bottom: none; }
   .row-icon { width: 34px; height: 34px; border-radius: 10px; background: var(--gx-green-dim); color: var(--gx-green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .row-text { flex: 1; font-size: 13.5px; font-weight: 500; }
@@ -468,21 +412,9 @@
 
   .logout-row { display: flex; align-items: center; gap: 10px; justify-content: center; width: 100%; background: none; border: none; color: #e55; font-size: 13.5px; font-weight: 700; padding: 8px; cursor: pointer; }
 
-  .modal-backdrop {
-    position: absolute; inset: 0;
-    background: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px); z-index: 20;
-    opacity: 0; pointer-events: none; transition: opacity .25s ease;
-    display: flex; flex-direction: column; justify-content: flex-end;
-  }
+  .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 20; opacity: 0; pointer-events: none; transition: opacity .25s ease; display: flex; flex-direction: column; justify-content: flex-end; }
   .modal-backdrop.active { opacity: 1; pointer-events: auto; }
-  .modal-sheet {
-    background: var(--gx-elevated);
-    border-radius: 24px 24px 0 0; padding: 14px 20px 24px;
-    border-top: 1px solid var(--gx-line);
-    transform: translateY(100%); transition: transform .3s cubic-bezier(0.16,1,0.3,1);
-    max-height: 85%; overflow-y: auto; color: var(--ink);
-  }
+  .modal-sheet { background: var(--gx-elevated); border-radius: 24px 24px 0 0; padding: 14px 20px 24px; border-top: 1px solid var(--gx-line); transform: translateY(100%); transition: transform .3s cubic-bezier(0.16,1,0.3,1); max-height: 85%; overflow-y: auto; color: var(--ink); }
   .modal-backdrop.active .modal-sheet { transform: translateY(0); }
   .modal-handle { width: 36px; height: 4px; background: rgba(255,255,255,0.18); border-radius: 100px; margin: 0 auto 14px; }
   .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
@@ -497,13 +429,7 @@
   .ex-info p { font-size: 13px; font-weight: 600; }
   .ex-info span { font-size: 11.5px; color: var(--ink-soft); }
 
-  .primary-btn {
-    width: 100%; padding: 14px; border-radius: 100px;
-    background: var(--gx-green); color: #000; border: none;
-    font-weight: 800; font-size: 14px; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    box-shadow: 0 6px 20px rgba(29,185,84,0.35);
-  }
+  .primary-btn { width: 100%; padding: 14px; border-radius: 100px; background: var(--gx-green); color: #000; border: none; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 20px rgba(29,185,84,0.35); }
 
   .form-group { margin-bottom: 14px; text-align: left; }
   .form-label { font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; display: block; }
@@ -524,32 +450,15 @@
   .notif-item strong { display: block; font-size: 13px; margin-bottom: 2px; }
   .notif-item time { font-size: 10.5px; color: var(--ink-faint); }
 
-  .toast {
-    position: absolute; top: 34px; left: 50%; transform: translateX(-50%) translateY(-16px);
-    background: var(--gx-elevated); color: var(--ink); padding: 8px 16px;
-    border: 1px solid var(--gx-line); border-radius: 100px; font-size: 12px; font-weight: 600;
-    opacity: 0; pointer-events: none; transition: all .28s ease; z-index: 30;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 6px;
-    white-space: nowrap;
-  }
+  .toast { position: absolute; top: 34px; left: 50%; transform: translateX(-50%) translateY(-16px); background: var(--gx-elevated); color: var(--ink); padding: 8px 16px; border: 1px solid var(--gx-line); border-radius: 100px; font-size: 12px; font-weight: 600; opacity: 0; pointer-events: none; transition: all .28s ease; z-index: 30; box-shadow: 0 8px 24px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
   .toast.active { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-  .hint { font-size: 12px; color: #444; text-align: center; }
-
-  @media (max-width: 440px) {
-    body { padding: 0; }
-    .page { gap: 0; }
-    .page-head { display: none; }
-    .phone { width: 100%; max-width: 100%; height: 100svh; border-radius: 0; padding: 0; box-shadow: none; }
-    .screen-frame { border-radius: 0; }
-  }
 </style>
 </head>
 <body>
 
+  <!-- Gyrox App Frame | Lead Architect: Tariq St. Patrick -->
   <div class="screen-frame" id="screen-frame">
 
-    <!-- GYROX SPLASH SCREEN -->
     <div class="splash-screen" id="splash-screen">
       <div class="splash-content">
         <h1 class="splash-title">GYROX</h1>
@@ -564,419 +473,420 @@
 
     <div class="screens">
 
-        <!-- HOME -->
-        <section class="screen active" id="home">
-          <header class="home-head">
-            <div class="user-row">
-              <div class="avatar">AK</div>
-              <div>
-                <p class="eyebrow">Good morning 👋</p>
-                <h2>Alex Kim</h2>
-              </div>
-            </div>
-            <button class="icon-btn" id="notif-btn" aria-label="Notifications">
-              <span class="icon" data-i="bell"></span>
-              <span class="dot"></span>
-            </button>
-          </header>
-
-          <div class="hero-card">
-            <div class="hero-top">
-              <div>
-                <p class="hero-label">Today's goal</p>
-                <p class="hero-value"><span id="ring-percent-text">72</span><span>%</span></p>
-                <p class="hero-sub">Keep going, almost there!</p>
-              </div>
-              <div class="ring-wrap">
-                <svg class="ring" id="home-ring" viewBox="0 0 120 120" data-value="72">
-                  <circle class="ring-bg" cx="60" cy="60" r="52"/>
-                  <circle class="ring-fg" cx="60" cy="60" r="52"/>
-                </svg>
-                <span class="ring-icon icon" data-i="flame"></span>
-              </div>
-            </div>
-            <div class="hero-stats">
-              <div><span class="icon" data-i="footprints"></span><strong id="hero-steps">8,240</strong> steps</div>
-              <div><span class="icon" data-i="flame"></span><strong id="hero-cals">512</strong> kcal</div>
-              <div><span class="icon" data-i="droplet"></span><strong id="hero-water">1.4</strong>L</div>
-            </div>
-          </div>
-
-          <div class="stat-row">
-            <div class="stat-card">
-              <span class="icon" data-i="footprints"></span>
-              <p class="stat-num" id="card-steps">8,240</p>
-              <p class="stat-label">Steps</p>
-            </div>
-            <div class="stat-card">
-              <span class="icon" data-i="flame"></span>
-              <p class="stat-num" id="card-cals">512</p>
-              <p class="stat-label">Calories</p>
-            </div>
-            <div class="stat-card">
-              <span class="icon" data-i="droplet"></span>
-              <p class="stat-num" id="card-water">1.4L</p>
-              <button class="stat-add-btn" id="add-water-btn">+250ml</button>
-            </div>
-          </div>
-
-          <div class="section-head">
-            <h3>Today's workout</h3>
-            <button class="link-btn" id="see-all-workouts">See all <span class="icon xs" data-i="chevron-right"></span></button>
-          </div>
-          <div class="workout-card" data-workout="Upper body strength" data-time="32 min" data-cals="280 kcal" data-cat="Strength">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Strength workout" loading="lazy">
-            <div class="card-overlay">
-              <div class="card-top-row">
-                <span class="card-tag">STRENGTH</span>
-                <button class="play-btn" aria-label="Start"><span class="icon" data-i="play"></span></button>
-              </div>
-              <p class="card-title">Upper Body Strength</p>
-              <div class="card-meta">
-                <span><span class="icon xs" data-i="clock"></span> 32 MIN</span>
-                <span>·</span>
-                <span><span class="icon xs" data-i="flame"></span> 280 KCAL</span>
-                <span>·</span>
-                <span>8 SETS</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="section-head">
-            <h3>Weekly activity</h3>
-            <span class="badge-green"><span class="icon xs" data-i="trending-up"></span>+12%</span>
-          </div>
-          <div class="chart-card">
-            <div class="bars" id="home-bars">
-              <div class="bar-track"><div class="bar-fill" data-h="38"></div><span class="bar-label">S</span></div>
-              <div class="bar-track"><div class="bar-fill" data-h="55"></div><span class="bar-label">M</span></div>
-              <div class="bar-track"><div class="bar-fill" data-h="42"></div><span class="bar-label">T</span></div>
-              <div class="bar-track"><div class="bar-fill" data-h="70"></div><span class="bar-label">W</span></div>
-              <div class="bar-track"><div class="bar-fill" data-h="48"></div><span class="bar-label">T</span></div>
-              <div class="bar-track"><div class="bar-fill" data-h="85"></div><span class="bar-label">F</span></div>
-              <div class="bar-track today"><div class="bar-fill" data-h="63"></div><span class="bar-label">S</span></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- WORKOUTS -->
-        <section class="screen" id="workouts">
-          <header class="screen-head">
-            <h2>Workouts</h2>
-            <button class="icon-btn" id="search-btn" aria-label="Search"><span class="icon" data-i="search"></span></button>
-          </header>
-
-          <div class="chips" id="workout-chips">
-            <button class="chip active" data-cat="all">All</button>
-            <button class="chip" data-cat="strength">Strength</button>
-            <button class="chip" data-cat="cardio">Cardio</button>
-            <button class="chip" data-cat="yoga">Yoga</button>
-            <button class="chip" data-cat="mobility">Mobility</button>
-          </div>
-
-          <div class="workout-card" style="height:180px;" data-workout="Full body burn" data-time="45 min" data-cals="410 kcal" data-cat="Cardio">
-            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80" alt="Cardio workout" loading="lazy">
-            <div class="card-overlay">
-              <div class="card-top-row">
-                <span class="card-tag">RECOMMENDED</span>
-                <button class="play-btn" aria-label="Start"><span class="icon" data-i="play"></span></button>
-              </div>
-              <p class="card-title">Full Body Sprint Burn</p>
-              <div class="card-meta">
-                <span><span class="icon xs" data-i="clock"></span> 45 MIN</span>
-                <span>·</span>
-                <span>INTERMEDIATE</span>
-              </div>
-            </div>
-          </div>
-
-          <ul class="workout-list" id="workout-list">
-            <li class="workout-row" data-cat="strength" data-workout="Upper body strength" data-time="32 min" data-cals="280 kcal">
-              <span class="w-icon"><span class="icon" data-i="dumbbell"></span></span>
-              <span class="w-info"><p>Upper body strength</p><span>32 min · 280 kcal</span></span>
-              <span class="icon chev" data-i="chevron-right"></span>
-            </li>
-            <li class="workout-row" data-cat="cardio" data-workout="HIIT cardio blast" data-time="20 min" data-cals="240 kcal">
-              <span class="w-icon"><span class="icon" data-i="footprints"></span></span>
-              <span class="w-info"><p>HIIT cardio blast</p><span>20 min · 240 kcal</span></span>
-              <span class="icon chev" data-i="chevron-right"></span>
-            </li>
-            <li class="workout-row" data-cat="yoga" data-workout="Zen Yoga flow" data-time="25 min" data-cals="140 kcal">
-              <span class="w-icon"><span class="icon" data-i="heart"></span></span>
-              <span class="w-info"><p>Zen Yoga flow</p><span>25 min · 140 kcal</span></span>
-              <span class="icon chev" data-i="chevron-right"></span>
-            </li>
-            <li class="workout-row" data-cat="mobility" data-workout="Core &amp; mobility" data-time="15 min" data-cals="110 kcal">
-              <span class="w-icon"><span class="icon" data-i="target"></span></span>
-              <span class="w-info"><p>Core &amp; mobility</p><span>15 min · 110 kcal</span></span>
-              <span class="icon chev" data-i="chevron-right"></span>
-            </li>
-          </ul>
-        </section>
-
-        <!-- PROGRESS -->
-        <section class="screen" id="progress">
-          <header class="screen-head">
-            <h2>Your progress</h2>
-            <button class="icon-btn" id="calendar-btn" aria-label="Calendar"><span class="icon" data-i="calendar"></span></button>
-          </header>
-
-          <div class="segmented" id="segmented">
-            <button class="seg active" data-range="week">Week</button>
-            <button class="seg" data-range="month">Month</button>
-            <button class="seg" data-range="year">Year</button>
-          </div>
-
-          <div class="summary-card">
+      <!-- Home Viewport -->
+      <section class="screen active" id="home">
+        <header class="home-head">
+          <div class="user-row">
+            <div class="avatar">AK</div>
             <div>
-              <p class="summary-label">Total distance</p>
-              <p class="summary-value"><span id="summary-value">42.6</span> <small id="summary-unit">km</small></p>
-            </div>
-            <span class="badge-green"><span class="icon xs" data-i="trending-up"></span><span id="summary-trend">+12%</span></span>
-          </div>
-
-          <div class="chart-card">
-            <div class="bars big" id="progress-bars">
-              <div class="bar-track"><div class="bar-fill" data-h="45"></div><span class="bar-label" data-lbl>S</span></div>
-              <div class="bar-track"><div class="bar-fill" data-h="60"></div><span class="bar-label" data-lbl>M</span></div>
-              <div class="bar-track"><div class="bar-fill" data-h="38"></div><span class="bar-label" data-lbl>T</span></div>
-              <div class="bar-track"><div class="bar-fill" data-h="72"></div><span class="bar-label" data-lbl>W</span></div>
-              <div class="bar-track"><div class="bar-fill" data-h="55"></div><span class="bar-label" data-lbl>T</span></div>
-              <div class="bar-track"><div class="bar-fill" data-h="90"></div><span class="bar-label" data-lbl>F</span></div>
-              <div class="bar-track today"><div class="bar-fill" data-h="65"></div><span class="bar-label" data-lbl>S</span></div>
+              <p class="eyebrow">Good morning 👋</p>
+              <h2>Alex Kim</h2>
             </div>
           </div>
+          <button class="icon-btn" id="notif-btn" aria-label="Notifications">
+            <span class="icon" data-i="bell"></span>
+            <span class="dot"></span>
+          </button>
+        </header>
 
-          <div class="grid-2" style="margin-top:24px;">
-            <div class="mini-stat"><span class="icon" data-i="dumbbell"></span><p class="mini-num">5</p><p class="mini-label">Workouts</p></div>
-            <div class="mini-stat"><span class="icon" data-i="clock"></span><p class="mini-num">3h 40m</p><p class="mini-label">Total time</p></div>
-            <div class="mini-stat"><span class="icon" data-i="flame"></span><p class="mini-num">2,180</p><p class="mini-label">Calories</p></div>
-            <div class="mini-stat"><span class="icon" data-i="award"></span><p class="mini-num">7 days</p><p class="mini-label">Streak</p></div>
-          </div>
-
-          <div class="section-head"><h3>Goals</h3></div>
-          <div class="goal-row">
-            <span class="goal-icon"><span class="icon" data-i="footprints"></span></span>
-            <div class="goal-body">
-              <div class="goal-top"><span>Steps goal</span><span>8,240 / 10,000</span></div>
-              <div class="progress-track"><div class="progress-fill" data-w="82"></div></div>
+        <div class="hero-card">
+          <div class="hero-top">
+            <div>
+              <p class="hero-label">Today's Hydration</p>
+              <p class="hero-value"><span id="hero-water">1.4</span> <span>/ 2.0L</span></p>
+              <p class="hero-sub">70% of daily goal completed</p>
+            </div>
+            <div class="ring-wrap" id="home-ring" data-value="70">
+              <svg class="ring" viewBox="0 0 120 120">
+                <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+                <circle class="ring-fg" cx="60" cy="60" r="52"></circle>
+              </svg>
+              <span class="ring-icon"><span class="icon" data-i="droplet"></span></span>
             </div>
           </div>
-          <div class="goal-row">
-            <span class="goal-icon"><span class="icon" data-i="droplet"></span></span>
-            <div class="goal-body">
-              <div class="goal-top"><span>Water goal</span><span id="goal-water-text">1.4L / 2.0L</span></div>
-              <div class="progress-track"><div class="progress-fill" id="goal-water-bar" data-w="70"></div></div>
-            </div>
+          <div class="hero-stats">
+            <div><span class="icon" data-i="flame"></span> <strong>540</strong> kcal</div>
+            <div><span class="icon" data-i="footprints"></span> <strong>8,240</strong> steps</div>
+            <div><span class="icon" data-i="clock"></span> <strong>45</strong> min</div>
           </div>
-          <div class="goal-row">
-            <span class="goal-icon"><span class="icon" data-i="target"></span></span>
-            <div class="goal-body">
-              <div class="goal-top"><span>Workout goal</span><span>5 / 6 sessions</span></div>
-              <div class="progress-track"><div class="progress-fill" data-w="83"></div></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- PROFILE -->
-        <section class="screen" id="profile">
-          <header class="screen-head">
-            <h2>Profile</h2>
-            <button class="icon-btn" id="edit-profile-btn" aria-label="Edit"><span class="icon" data-i="edit"></span></button>
-          </header>
-
-          <div class="profile-card">
-            <div class="avatar lg">AK</div>
-            <p class="profile-name">Alex Kim</p>
-            <p class="profile-sub">Member since Jan 2025</p>
-            <div class="profile-stats">
-              <div><p>128</p><span>Workouts</span></div>
-              <div><p>7</p><span>Day streak</span></div>
-              <div><p>12</p><span>Achievements</span></div>
-            </div>
-          </div>
-
-          <div class="section-head"><h3>Account</h3></div>
-          <div class="list-card">
-            <button class="list-row" id="row-personal"><span class="row-icon"><span class="icon" data-i="user"></span></span><span class="row-text">Personal information</span><span class="icon chev" data-i="chevron-right"></span></button>
-            <button class="list-row" id="row-goals"><span class="row-icon"><span class="icon" data-i="target"></span></span><span class="row-text">Fitness goals</span><span class="icon chev" data-i="chevron-right"></span></button>
-            <button class="list-row" id="row-achievements"><span class="row-icon"><span class="icon" data-i="award"></span></span><span class="row-text">Achievements</span><span class="icon chev" data-i="chevron-right"></span></button>
-          </div>
-
-          <div class="section-head"><h3>Preferences</h3></div>
-          <div class="list-card">
-            <div class="list-row"><span class="row-icon"><span class="icon" data-i="bell"></span></span><span class="row-text">Notifications</span><button class="toggle on" data-toggle aria-label="Toggle notifications"></button></div>
-            <div class="list-row"><span class="row-icon"><span class="icon" data-i="moon"></span></span><span class="row-text">Dark mode</span><button class="toggle on" id="dark-mode-toggle" aria-label="Toggle dark mode"></button></div>
-          </div>
-
-          <button class="logout-row" id="logout-btn"><span class="icon" data-i="log-out"></span>Log out</button>
-        </section>
-
-      </div>
-
-      <!-- TAB BAR -->
-      <div class="tabbar-wrapper">
-        <nav class="tabbar">
-          <button class="navbtn active" data-target="home"><span class="icon" data-i="home"></span><span>Home</span></button>
-          <button class="navbtn" data-target="workouts"><span class="icon" data-i="dumbbell"></span><span>Workouts</span></button>
-          <button class="navbtn" data-target="progress"><span class="icon" data-i="bar-chart"></span><span>Progress</span></button>
-          <button class="navbtn" data-target="profile"><span class="icon" data-i="user"></span><span>Profile</span></button>
-        </nav>
-      </div>
-
-      <!-- WORKOUT DETAIL MODAL -->
-      <div class="modal-backdrop" id="workout-modal">
-        <div class="modal-sheet">
-          <div class="modal-handle"></div>
-          <header class="modal-head">
-            <h3 id="modal-w-title">Upper body strength</h3>
-            <button class="icon-btn" id="close-modal-btn" style="width:30px;height:30px;">&times;</button>
-          </header>
-          <div class="modal-hero">
-            <span class="badge-green" id="modal-w-cat">Strength</span>
-            <p class="modal-meta" id="modal-w-meta">32 min &bull; 280 kcal &bull; 8 exercises</p>
-          </div>
-          <h4 class="sub-heading">Routine Breakdown</h4>
-          <div class="exercise-list">
-            <div class="exercise-item"><div class="ex-num">1</div><div class="ex-info"><p>Barbell Bench Press</p><span>4 sets &times; 10 reps</span></div></div>
-            <div class="exercise-item"><div class="ex-num">2</div><div class="ex-info"><p>Incline Dumbbell Press</p><span>3 sets &times; 12 reps</span></div></div>
-            <div class="exercise-item"><div class="ex-num">3</div><div class="ex-info"><p>Seated Shoulder Press</p><span>4 sets &times; 8 reps</span></div></div>
-          </div>
-          <button class="primary-btn" id="start-session-btn"><span class="icon" data-i="play"></span> Start Session</button>
         </div>
-      </div>
 
-      <!-- TIMER MODAL -->
-      <div class="modal-backdrop" id="timer-modal">
-        <div class="modal-sheet">
-          <div class="modal-handle"></div>
-          <div class="timer-box">
-            <span class="badge-green"><span class="icon xs" data-i="clock"></span> Session Active</span>
-            <h3 id="timer-title" style="margin-top:10px;">Upper body strength</h3>
-            <div class="timer-clock" id="timer-clock">00:00</div>
-            <p class="modal-meta">Current exercise: Bench Press (Set 1 of 4)</p>
-            <div class="timer-actions">
-              <button class="btn-sec" id="pause-timer-btn">Pause</button>
-              <button class="btn-pri" id="finish-timer-btn">Finish Session</button>
+        <div class="stat-row">
+          <div class="stat-card">
+            <span class="icon" data-i="footprints"></span>
+            <p class="stat-num">8,240</p>
+            <p class="stat-label">Steps</p>
+          </div>
+          <div class="stat-card">
+            <span class="icon" data-i="droplet"></span>
+            <p class="stat-num" id="card-water">1.4L</p>
+            <p class="stat-label">Water</p>
+            <button class="stat-add-btn" id="add-water-btn">+250ml</button>
+          </div>
+          <div class="stat-card">
+            <span class="icon" data-i="flame"></span>
+            <p class="stat-num">540</p>
+            <p class="stat-label">Active Cals</p>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <h3>Daily Activity</h3>
+          <span style="font-size:11px;color:var(--ink-soft);font-weight:600;">This Week</span>
+        </div>
+        <div class="chart-card">
+          <div class="bars" id="home-bars">
+            <div class="bar-track"><div class="bar-fill" data-h="45"></div><span class="bar-label">M</span></div>
+            <div class="bar-track"><div class="bar-fill" data-h="75"></div><span class="bar-label">T</span></div>
+            <div class="bar-track"><div class="bar-fill" data-h="30"></div><span class="bar-label">W</span></div>
+            <div class="bar-track"><div class="bar-fill" data-h="90"></div><span class="bar-label">T</span></div>
+            <div class="bar-track"><div class="bar-fill" data-h="48"></div><span class="bar-label">F</span></div>
+            <div class="bar-track"><div class="bar-fill" data-h="85"></div><span class="bar-label">S</span></div>
+            <div class="bar-track today"><div class="bar-fill" data-h="63"></div><span class="bar-label">S</span></div>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <h3>Featured Routine</h3>
+          <button class="link-btn" id="see-all-workouts">See all <span class="icon sm" data-i="chevron-right"></span></button>
+        </div>
+        <div class="workout-card" data-workout="Upper body strength" data-time="32 min" data-cals="280 kcal" data-cat="Strength">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Strength workout">
+          <div class="card-overlay">
+            <div class="card-top-row">
+              <span class="card-tag">FEATURED</span>
+              <button class="play-btn" aria-label="Start"><span class="icon" data-i="play"></span></button>
+            </div>
+            <p class="card-title">Upper Body Strength</p>
+            <div class="card-meta">
+              <span><span class="icon xs" data-i="clock"></span> 32 MIN</span>
+              <span>·</span>
+              <span>ADVANCED</span>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- NOTIFICATIONS MODAL -->
-      <div class="modal-backdrop" id="notif-modal">
-        <div class="modal-sheet">
-          <div class="modal-handle"></div>
-          <header class="modal-head">
-            <h3>Notifications</h3>
-            <button class="icon-btn" id="close-notif-btn" style="width:30px;height:30px;">&times;</button>
-          </header>
-          <div class="notif-item"><strong>&#x1F525; Goal Reached!</strong>Yesterday you hit 10,420 steps. Great work!<br><time>2 hours ago</time></div>
-          <div class="notif-item"><strong>&#x1F4A7; Hydration Reminder</strong>Don't forget to drink water.<br><time>5 hours ago</time></div>
-          <div class="notif-item"><strong>&#x1F3C6; New Streak Record</strong>You achieved a 7-day workout streak.<br><time>Yesterday</time></div>
+      <!-- Workouts Viewport -->
+      <section class="screen" id="workouts">
+        <header class="screen-head">
+          <h2>Workouts</h2>
+          <button class="icon-btn" id="search-btn" aria-label="Search"><span class="icon" data-i="search"></span></button>
+        </header>
+
+        <div class="chips" id="workout-chips">
+          <button class="chip active" data-cat="all">All</button>
+          <button class="chip" data-cat="strength">Strength</button>
+          <button class="chip" data-cat="cardio">Cardio</button>
+          <button class="chip" data-cat="yoga">Yoga</button>
+          <button class="chip" data-cat="mobility">Mobility</button>
         </div>
-      </div>
 
-      <!-- SEARCH MODAL -->
-      <div class="modal-backdrop" id="search-modal">
-        <div class="modal-sheet">
-          <div class="modal-handle"></div>
-          <header class="modal-head">
-            <h3>Search Workouts</h3>
-            <button class="icon-btn" id="close-search-btn" style="width:30px;height:30px;">&times;</button>
-          </header>
-          <div class="search-input-box">
-            <span class="icon" data-i="search"></span>
-            <input type="text" class="form-input" id="search-query-input" placeholder="Search by name, category, or time...">
-          </div>
-          <h4 class="sub-heading">Matching Routines</h4>
-          <ul class="workout-list" id="search-results-list">
-          </ul>
-        </div>
-      </div>
-
-      <!-- CALENDAR MODAL -->
-      <div class="modal-backdrop" id="calendar-modal">
-        <div class="modal-sheet">
-          <div class="modal-handle"></div>
-          <header class="modal-head">
-            <h3>Workout Schedule</h3>
-            <button class="icon-btn" id="close-calendar-btn" style="width:30px;height:30px;">&times;</button>
-          </header>
-          <div class="modal-hero">
-            <span class="badge-green"><span class="icon xs" data-i="calendar"></span> September 2026</span>
-            <p class="modal-meta">5 workouts completed this week</p>
-          </div>
-          <h4 class="sub-heading">Weekly Activity</h4>
-          <div class="exercise-list">
-            <div class="exercise-item"><div class="ex-num" style="background:var(--gx-green);color:#000;">M</div><div class="ex-info"><p>Upper Body Strength</p><span>Completed &bull; 32 min &bull; 280 kcal</span></div></div>
-            <div class="exercise-item"><div class="ex-num" style="background:var(--gx-green);color:#000;">T</div><div class="ex-info"><p>HIIT Cardio Blast</p><span>Completed &bull; 20 min &bull; 240 kcal</span></div></div>
-            <div class="exercise-item"><div class="ex-num" style="background:var(--gx-green);color:#000;">W</div><div class="ex-info"><p>Core &amp; Mobility</p><span>Completed &bull; 15 min &bull; 110 kcal</span></div></div>
-            <div class="exercise-item"><div class="ex-num" style="background:var(--gx-green);color:#000;">T</div><div class="ex-info"><p>Full Body Sprint Burn</p><span>Completed &bull; 45 min &bull; 410 kcal</span></div></div>
-            <div class="exercise-item"><div class="ex-num" style="background:rgba(255,255,255,0.15);color:var(--ink-soft);">F</div><div class="ex-info"><p>Zen Yoga Flow</p><span>Today &bull; Scheduled 18:00</span></div></div>
-          </div>
-          <button class="primary-btn" id="schedule-workout-btn"><span class="icon" data-i="clock"></span> Set Workout Reminder</button>
-        </div>
-      </div>
-
-      <!-- EDIT PROFILE MODAL -->
-      <div class="modal-backdrop" id="edit-profile-modal">
-        <div class="modal-sheet">
-          <div class="modal-handle"></div>
-          <header class="modal-head">
-            <h3>Edit Profile</h3>
-            <button class="icon-btn" id="close-edit-profile-btn" style="width:30px;height:30px;">&times;</button>
-          </header>
-          <form id="edit-profile-form">
-            <div class="form-group">
-              <label class="form-label">Full Name</label>
-              <input type="text" class="form-input" id="edit-name" value="Alex Kim" required>
+        <div class="workout-card" style="height:180px;" data-workout="Full body burn" data-time="45 min" data-cals="410 kcal" data-cat="Cardio">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80" alt="Cardio workout">
+          <div class="card-overlay">
+            <div class="card-top-row">
+              <span class="card-tag">RECOMMENDED</span>
+              <button class="play-btn" aria-label="Start"><span class="icon" data-i="play"></span></button>
             </div>
-            <div class="form-group">
-              <label class="form-label">Email Address</label>
-              <input type="email" class="form-input" id="edit-email" value="alex.kim@example.com" required>
+            <p class="card-title">Full Body Sprint Burn</p>
+            <div class="card-meta">
+              <span><span class="icon xs" data-i="clock"></span> 45 MIN</span>
+              <span>·</span>
+              <span>INTERMEDIATE</span>
             </div>
-            <div class="form-group">
-              <label class="form-label">Weight (kg)</label>
-              <input type="number" class="form-input" id="edit-weight" value="72" required>
-            </div>
-            <button type="submit" class="primary-btn" style="margin-top:10px;">Save Profile</button>
-          </form>
-        </div>
-      </div>
-
-      <!-- PROFILE INFO MODAL -->
-      <div class="modal-backdrop" id="profile-info-modal">
-        <div class="modal-sheet">
-          <div class="modal-handle"></div>
-          <header class="modal-head">
-            <h3 id="info-modal-title">Account Details</h3>
-            <button class="icon-btn" id="close-profile-info-btn" style="width:30px;height:30px;">&times;</button>
-          </header>
-          <div id="info-modal-content">
           </div>
         </div>
-      </div>
 
-      <!-- LOGOUT MODAL -->
-      <div class="modal-backdrop" id="logout-modal">
-        <div class="modal-sheet">
-          <div class="modal-handle"></div>
-          <header class="modal-head">
-            <h3>Log Out</h3>
-            <button class="icon-btn" id="close-logout-btn" style="width:30px;height:30px;">&times;</button>
-          </header>
-          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:20px;line-height:1.5;">Are you sure you want to log out of Gyrox? Your activity stats will remain synced to your cloud account.</p>
-          <div style="display:flex;gap:10px;">
-            <button class="btn-sec" id="cancel-logout-btn" style="flex:1;">Cancel</button>
-            <button class="primary-btn" id="confirm-logout-btn" style="flex:1;background:#e55;color:#fff;box-shadow:none;">Log Out</button>
+        <ul class="workout-list" id="workout-list">
+          <li class="workout-row" data-cat="strength" data-workout="Upper body strength" data-time="32 min" data-cals="280 kcal">
+            <span class="w-icon"><span class="icon" data-i="dumbbell"></span></span>
+            <span class="w-info"><p>Upper body strength</p><span>32 min · 280 kcal</span></span>
+            <span class="icon chev" data-i="chevron-right"></span>
+          </li>
+          <li class="workout-row" data-cat="cardio" data-workout="HIIT cardio blast" data-time="20 min" data-cals="240 kcal">
+            <span class="w-icon"><span class="icon" data-i="footprints"></span></span>
+            <span class="w-info"><p>HIIT cardio blast</p><span>20 min · 240 kcal</span></span>
+            <span class="icon chev" data-i="chevron-right"></span>
+          </li>
+          <li class="workout-row" data-cat="yoga" data-workout="Zen Yoga flow" data-time="25 min" data-cals="140 kcal">
+            <span class="w-icon"><span class="icon" data-i="heart"></span></span>
+            <span class="w-info"><p>Zen Yoga flow</p><span>25 min · 140 kcal</span></span>
+            <span class="icon chev" data-i="chevron-right"></span>
+          </li>
+          <li class="workout-row" data-cat="mobility" data-workout="Core &amp; mobility" data-time="15 min" data-cals="110 kcal">
+            <span class="w-icon"><span class="icon" data-i="target"></span></span>
+            <span class="w-info"><p>Core &amp; mobility</p><span>15 min · 110 kcal</span></span>
+            <span class="icon chev" data-i="chevron-right"></span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Progress Viewport -->
+      <section class="screen" id="progress">
+        <header class="screen-head">
+          <h2>Your progress</h2>
+          <button class="icon-btn" id="calendar-btn" aria-label="Calendar"><span class="icon" data-i="calendar"></span></button>
+        </header>
+
+        <div class="segmented" id="segmented">
+          <button class="seg active" data-range="week">Week</button>
+          <button class="seg" data-range="month">Month</button>
+          <button class="seg" data-range="year">Year</button>
+        </div>
+
+        <div class="summary-card">
+          <div>
+            <p class="summary-label">Total distance</p>
+            <p class="summary-value"><span id="summary-value">42.6</span> <small id="summary-unit">km</small></p>
+          </div>
+          <span class="badge-green"><span class="icon xs" data-i="trending-up"></span><span id="summary-trend">+12%</span></span>
+        </div>
+
+        <div class="chart-card">
+          <div class="bars big" id="progress-bars">
+            <div class="bar-track"><div class="bar-fill" data-h="45"></div><span class="bar-label" data-lbl>S</span></div>
+            <div class="bar-track"><div class="bar-fill" data-h="60"></div><span class="bar-label" data-lbl>M</span></div>
+            <div class="bar-track"><div class="bar-fill" data-h="38"></div><span class="bar-label" data-lbl>T</span></div>
+            <div class="bar-track"><div class="bar-fill" data-h="72"></div><span class="bar-label" data-lbl>W</span></div>
+            <div class="bar-track"><div class="bar-fill" data-h="55"></div><span class="bar-label" data-lbl>T</span></div>
+            <div class="bar-track"><div class="bar-fill" data-h="90"></div><span class="bar-label" data-lbl>F</span></div>
+            <div class="bar-track today"><div class="bar-fill" data-h="65"></div><span class="bar-label" data-lbl>S</span></div>
           </div>
         </div>
-      </div>
+
+        <div class="grid-2" style="margin-top:24px;">
+          <div class="mini-stat"><span class="icon" data-i="dumbbell"></span><p class="mini-num">5</p><p class="mini-label">Workouts</p></div>
+          <div class="mini-stat"><span class="icon" data-i="clock"></span><p class="mini-num">3h 40m</p><p class="mini-label">Total time</p></div>
+          <div class="mini-stat"><span class="icon" data-i="flame"></span><p class="mini-num">2,180</p><p class="mini-label">Calories</p></div>
+          <div class="mini-stat"><span class="icon" data-i="award"></span><p class="mini-num">7 days</p><p class="mini-label">Streak</p></div>
+        </div>
+
+        <div class="section-head"><h3>Goals</h3></div>
+        <div class="goal-row">
+          <span class="goal-icon"><span class="icon" data-i="footprints"></span></span>
+          <div class="goal-body">
+            <div class="goal-top"><span>Steps goal</span><span>8,240 / 10,000</span></div>
+            <div class="progress-track"><div class="progress-fill" data-w="82"></div></div>
+          </div>
+        </div>
+        <div class="goal-row">
+          <span class="goal-icon"><span class="icon" data-i="droplet"></span></span>
+          <div class="goal-body">
+            <div class="goal-top"><span>Water goal</span><span id="goal-water-text">1.4L / 2.0L</span></div>
+            <div class="progress-track"><div class="progress-fill" id="goal-water-bar" data-w="70"></div></div>
+          </div>
+        </div>
+        <div class="goal-row">
+          <span class="goal-icon"><span class="icon" data-i="target"></span></span>
+          <div class="goal-body">
+            <div class="goal-top"><span>Workout goal</span><span>5 / 6 sessions</span></div>
+            <div class="progress-track"><div class="progress-fill" data-w="83"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile Viewport -->
+      <section class="screen" id="profile">
+        <header class="screen-head">
+          <h2>Profile</h2>
+          <button class="icon-btn" id="edit-profile-btn" aria-label="Edit"><span class="icon" data-i="edit"></span></button>
+        </header>
+
+        <div class="profile-card">
+          <div class="avatar lg">AK</div>
+          <p class="profile-name">Alex Kim</p>
+          <p class="profile-sub">Member since Jan 2025</p>
+          <div class="profile-stats">
+            <div><p>128</p><span>Workouts</span></div>
+            <div><p>7</p><span>Day streak</span></div>
+            <div><p>12</p><span>Achievements</span></div>
+          </div>
+        </div>
+
+        <div class="section-head"><h3>Account</h3></div>
+        <div class="list-card">
+          <button class="list-row" id="row-personal"><span class="row-icon"><span class="icon" data-i="user"></span></span><span class="row-text">Personal information</span><span class="icon chev" data-i="chevron-right"></span></button>
+          <button class="list-row" id="row-goals"><span class="row-icon"><span class="icon" data-i="target"></span></span><span class="row-text">Fitness goals</span><span class="icon chev" data-i="chevron-right"></span></button>
+          <button class="list-row" id="row-achievements"><span class="row-icon"><span class="icon" data-i="award"></span></span><span class="row-text">Achievements</span><span class="icon chev" data-i="chevron-right"></span></button>
+        </div>
+
+        <div class="section-head"><h3>Preferences</h3></div>
+        <div class="list-card">
+          <div class="list-row"><span class="row-icon"><span class="icon" data-i="bell"></span></span><span class="row-text">Notifications</span><button class="toggle on" data-toggle aria-label="Toggle notifications"></button></div>
+          <div class="list-row"><span class="row-icon"><span class="icon" data-i="moon"></span></span><span class="row-text">Dark mode</span><button class="toggle on" id="dark-mode-toggle" aria-label="Toggle dark mode"></button></div>
+        </div>
+
+        <button class="logout-row" id="logout-btn"><span class="icon" data-i="log-out"></span>Log out</button>
+      </section>
 
     </div>
 
+    <!-- Navigation Tab Bar -->
+    <div class="tabbar-wrapper">
+      <nav class="tabbar">
+        <button class="navbtn active" data-target="home"><span class="icon" data-i="home"></span><span>Home</span></button>
+        <button class="navbtn" data-target="workouts"><span class="icon" data-i="dumbbell"></span><span>Workouts</span></button>
+        <button class="navbtn" data-target="progress"><span class="icon" data-i="bar-chart"></span><span>Progress</span></button>
+        <button class="navbtn" data-target="profile"><span class="icon" data-i="user"></span><span>Profile</span></button>
+      </nav>
+    </div>
+
+    <!-- Workout Detail Sheet -->
+    <div class="modal-backdrop" id="workout-modal">
+      <div class="modal-sheet">
+        <div class="modal-handle"></div>
+        <header class="modal-head">
+          <h3 id="modal-w-title">Upper body strength</h3>
+          <button class="icon-btn" id="close-modal-btn" style="width:30px;height:30px;">&times;</button>
+        </header>
+        <div class="modal-hero">
+          <span class="badge-green" id="modal-w-cat">Strength</span>
+          <p class="modal-meta" id="modal-w-meta">32 min &bull; 280 kcal &bull; 8 exercises</p>
+        </div>
+        <h4 class="sub-heading">Routine Breakdown</h4>
+        <div class="exercise-list">
+          <div class="exercise-item"><div class="ex-num">1</div><div class="ex-info"><p>Barbell Bench Press</p><span>4 sets &times; 10 reps</span></div></div>
+          <div class="exercise-item"><div class="ex-num">2</div><div class="ex-info"><p>Incline Dumbbell Press</p><span>3 sets &times; 12 reps</span></div></div>
+          <div class="exercise-item"><div class="ex-num">3</div><div class="ex-info"><p>Seated Shoulder Press</p><span>4 sets &times; 8 reps</span></div></div>
+        </div>
+        <button class="primary-btn" id="start-session-btn"><span class="icon" data-i="play"></span> Start Session</button>
+      </div>
+    </div>
+
+    <!-- Active Timer Sheet -->
+    <div class="modal-backdrop" id="timer-modal">
+      <div class="modal-sheet">
+        <div class="modal-handle"></div>
+        <div class="timer-box">
+          <span class="badge-green"><span class="icon xs" data-i="clock"></span> Session Active</span>
+          <h3 id="timer-title" style="margin-top:10px;">Upper body strength</h3>
+          <div class="timer-clock" id="timer-clock">00:00</div>
+          <p class="modal-meta">Current exercise: Bench Press (Set 1 of 4)</p>
+          <div class="timer-actions">
+            <button class="btn-sec" id="pause-timer-btn">Pause</button>
+            <button class="btn-pri" id="finish-timer-btn">Finish Session</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notifications Sheet -->
+    <div class="modal-backdrop" id="notif-modal">
+      <div class="modal-sheet">
+        <div class="modal-handle"></div>
+        <header class="modal-head">
+          <h3>Notifications</h3>
+          <button class="icon-btn" id="close-notif-btn" style="width:30px;height:30px;">&times;</button>
+        </header>
+        <div class="notif-item"><strong>&#x1F525; Goal Reached!</strong>Yesterday you hit 10,420 steps. Great work!<br><time>2 hours ago</time></div>
+        <div class="notif-item"><strong>&#x1F4A7; Hydration Reminder</strong>Don't forget to drink water.<br><time>5 hours ago</time></div>
+        <div class="notif-item"><strong>&#x1F3C6; New Streak Record</strong>You achieved a 7-day workout streak.<br><time>Yesterday</time></div>
+      </div>
+    </div>
+
+    <!-- Search Sheet -->
+    <div class="modal-backdrop" id="search-modal">
+      <div class="modal-sheet">
+        <div class="modal-handle"></div>
+        <header class="modal-head">
+          <h3>Search Workouts</h3>
+          <button class="icon-btn" id="close-search-btn" style="width:30px;height:30px;">&times;</button>
+        </header>
+        <div class="search-input-box">
+          <span class="icon" data-i="search"></span>
+          <input type="text" class="form-input" id="search-query-input" placeholder="Search by name, category, or time...">
+        </div>
+        <h4 class="sub-heading">Matching Routines</h4>
+        <ul class="workout-list" id="search-results-list"></ul>
+      </div>
+    </div>
+
+    <!-- Calendar Sheet -->
+    <div class="modal-backdrop" id="calendar-modal">
+      <div class="modal-sheet">
+        <div class="modal-handle"></div>
+        <header class="modal-head">
+          <h3>Workout Schedule</h3>
+          <button class="icon-btn" id="close-calendar-btn" style="width:30px;height:30px;">&times;</button>
+        </header>
+        <div class="modal-hero">
+          <span class="badge-green"><span class="icon xs" data-i="calendar"></span> September 2026</span>
+          <p class="modal-meta">5 workouts completed this week</p>
+        </div>
+        <h4 class="sub-heading">Weekly Activity</h4>
+        <div class="exercise-list">
+          <div class="exercise-item"><div class="ex-num" style="background:var(--gx-green);color:#000;">M</div><div class="ex-info"><p>Upper Body Strength</p><span>Completed &bull; 32 min &bull; 280 kcal</span></div></div>
+          <div class="exercise-item"><div class="ex-num" style="background:var(--gx-green);color:#000;">T</div><div class="ex-info"><p>HIIT Cardio Blast</p><span>Completed &bull; 20 min &bull; 240 kcal</span></div></div>
+          <div class="exercise-item"><div class="ex-num" style="background:var(--gx-green);color:#000;">W</div><div class="ex-info"><p>Core &amp; Mobility</p><span>Completed &bull; 15 min &bull; 110 kcal</span></div></div>
+          <div class="exercise-item"><div class="ex-num" style="background:var(--gx-green);color:#000;">T</div><div class="ex-info"><p>Full Body Sprint Burn</p><span>Completed &bull; 45 min &bull; 410 kcal</span></div></div>
+          <div class="exercise-item"><div class="ex-num" style="background:rgba(255,255,255,0.15);color:var(--ink-soft);">F</div><div class="ex-info"><p>Zen Yoga Flow</p><span>Today &bull; Scheduled 18:00</span></div></div>
+        </div>
+        <button class="primary-btn" id="schedule-workout-btn"><span class="icon" data-i="clock"></span> Set Workout Reminder</button>
+      </div>
+    </div>
+
+    <!-- Edit Profile Sheet -->
+    <div class="modal-backdrop" id="edit-profile-modal">
+      <div class="modal-sheet">
+        <div class="modal-handle"></div>
+        <header class="modal-head">
+          <h3>Edit Profile</h3>
+          <button class="icon-btn" id="close-edit-profile-btn" style="width:30px;height:30px;">&times;</button>
+        </header>
+        <form id="edit-profile-form">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" id="edit-name" value="Alex Kim" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" id="edit-email" value="alex.kim@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Weight (kg)</label>
+            <input type="number" class="form-input" id="edit-weight" value="72" required>
+          </div>
+          <button type="submit" class="primary-btn" style="margin-top:10px;">Save Profile</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Account Details Sheet -->
+    <div class="modal-backdrop" id="profile-info-modal">
+      <div class="modal-sheet">
+        <div class="modal-handle"></div>
+        <header class="modal-head">
+          <h3 id="info-modal-title">Account Details</h3>
+          <button class="icon-btn" id="close-profile-info-btn" style="width:30px;height:30px;">&times;</button>
+        </header>
+        <div id="info-modal-content"></div>
+      </div>
+    </div>
+
+    <!-- Logout Sheet -->
+    <div class="modal-backdrop" id="logout-modal">
+      <div class="modal-sheet">
+        <div class="modal-handle"></div>
+        <header class="modal-head">
+          <h3>Log Out</h3>
+          <button class="icon-btn" id="close-logout-btn" style="width:30px;height:30px;">&times;</button>
+        </header>
+        <p style="font-size:13px;color:var(--ink-soft);margin-bottom:20px;line-height:1.5;">Are you sure you want to log out of Gyrox? Your activity stats will remain synced to your cloud account.</p>
+        <div style="display:flex;gap:10px;">
+          <button class="btn-sec" id="cancel-logout-btn" style="flex:1;">Cancel</button>
+          <button class="primary-btn" id="confirm-logout-btn" style="flex:1;background:#e55;color:#fff;box-shadow:none;">Log Out</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 <script>
+  /**
+   * Gyrox Frontend Engine
+   * Lead Developer: Tariq St. Patrick
+   */
   const ICONS = {
     home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>',
     dumbbell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6"/><path d="M2 8v8"/><path d="M20 9v6"/><path d="M22 8v8"/><path d="M6 12h12"/><path d="M6 9.5v5"/><path d="M18 9.5v5"/></svg>',
@@ -1002,7 +912,6 @@
 
   document.querySelectorAll('[data-i]').forEach(el => { el.innerHTML = ICONS[el.dataset.i] || ''; });
 
-  // Splash Screen Dismissal
   setTimeout(() => {
     const splash = document.getElementById('splash-screen');
     if (splash) splash.classList.add('hidden');
@@ -1180,7 +1089,6 @@
     toastTimer = setTimeout(() => b.classList.remove('active'), 2500);
   }
 
-  // Play buttons handling (prevent bubble up & open timer directly)
   document.querySelectorAll('.play-btn').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
@@ -1200,7 +1108,6 @@
     });
   });
 
-  // Search Modal Wiring
   const searchModal = document.getElementById('search-modal');
   const searchBtn   = document.getElementById('search-btn');
   const closeSearch = document.getElementById('close-search-btn');
@@ -1256,7 +1163,6 @@
   closeSearch?.addEventListener('click', () => closeModal(searchModal));
   searchInput?.addEventListener('input', e => renderSearchResults(e.target.value));
 
-  // Calendar Modal Wiring
   const calendarModal = document.getElementById('calendar-modal');
   const calendarBtn   = document.getElementById('calendar-btn');
   const closeCalendar = document.getElementById('close-calendar-btn');
@@ -1269,7 +1175,6 @@
     showToast('Reminder set for tomorrow at 08:00 AM!');
   });
 
-  // Edit Profile Modal Wiring
   const editProfileModal = document.getElementById('edit-profile-modal');
   const editProfileBtn   = document.getElementById('edit-profile-btn');
   const closeEditProfile = document.getElementById('close-edit-profile-btn');
@@ -1287,7 +1192,6 @@
     showToast('Profile changes saved successfully!');
   });
 
-  // Profile Info Modal Wiring
   const profileInfoModal = document.getElementById('profile-info-modal');
   const closeProfileInfo = document.getElementById('close-profile-info-btn');
   const infoTitle = document.getElementById('info-modal-title');
@@ -1334,13 +1238,11 @@
     openModal(profileInfoModal);
   });
 
-  // Dark Mode Toggle logic
   document.getElementById('dark-mode-toggle')?.addEventListener('click', () => {
     const isDark = document.getElementById('dark-mode-toggle').classList.contains('on');
-    showToast(isDark ? 'Dark Theme Active' : 'Light Mode Disabled (Dark Theme Required)');
+    showToast(isDark ? 'Dark Theme Active' : 'Light Mode Disabled');
   });
 
-  // Logout Modal Wiring
   const logoutModal = document.getElementById('logout-modal');
   const logoutBtn   = document.getElementById('logout-btn');
   const closeLogout = document.getElementById('close-logout-btn');

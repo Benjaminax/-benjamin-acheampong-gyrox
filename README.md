@@ -45,12 +45,12 @@ npm start
 ### Option 3: Launch Web Browser Version
 You can run the web version directly in any web browser:
 
-1. Open **`voltix-prototype.html`** in your favorite browser (Chrome, Edge, Firefox, Safari).
+1. Open **`index.html`** in your favorite browser (Chrome, Edge, Firefox, Safari).
 2. Alternatively, serve it via Python or Node:
    ```bash
    python -m http.server 8085
    ```
-   Then open `http://localhost:8085/voltix-prototype.html`.
+   Then open `http://localhost:8085/index.html`.
 
 ---
 
@@ -67,7 +67,7 @@ The output executable will be created at `dist/Gyrox-win32-x64/Gyrox.exe`.
 ## 📁 Repository Structure
 
 ```
-├── voltix-prototype.html   # Main web application & mobile UI
+├── index.html              # Main web application & mobile UI (Architect: Tariq St. Patrick)
 ├── main.js                 # Electron main process entry point
 ├── package.json            # Dependencies and npm scripts
 ├── dist/                   # Packaged Windows desktop app (.exe)

@@ -1,6 +1,10 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
+/**
+ * Gyrox Desktop Application Entry
+ * Lead Architect: Tariq St. Patrick
+ */
 function createWindow() {
   const win = new BrowserWindow({
     width: 460,
@@ -9,7 +13,7 @@ function createWindow() {
     minHeight: 700,
     resizable: true,
     autoHideMenuBar: true,
-    title: 'Gyrox — Fitness & Wellness App',
+    title: 'Gyrox',
     backgroundColor: '#121212',
     webPreferences: {
       nodeIntegration: false,
@@ -17,7 +21,7 @@ function createWindow() {
     }
   });
 
-  win.loadFile(path.join(__dirname, 'voltix-prototype.html'));
+  win.loadFile(path.join(__dirname, 'index.html'));
 }
 
 app.whenReady().then(createWindow);
