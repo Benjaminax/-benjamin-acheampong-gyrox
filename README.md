@@ -1,85 +1,93 @@
-# Gyrox — Fitness & Wellness Application
+# 🏋️ Gyrox — Fitness & Wellness Application
 
-**Gyrox** is a high-performance, industry-standard fitness and wellness desktop & mobile application built with a modern dark theme, smooth micro-animations, interactive workout tracking, progress analytics, and custom modals.
-
----
-
-## ⚡ Features
-
-- **Gyrox Splash Screen**: Clean, animated startup splash screen (`GYROX — TRAIN • TRACK • OVERCOME`).
-- **Interactive Workout Hub**: Search workouts by name/category, filter by activity, view routine breakdowns, and launch live timer sessions.
-- **Progress & Analytics**: Interactive weekly/monthly/yearly charts, distance tracking, step goals, and streak metrics.
-- **Hydration Tracker**: Real-time water logging (+250ml quick add) with dynamic progress ring updates.
-- **User Profile & Account Sheets**: Edit profile details, view personal specs, track fitness goals, and inspect achievements.
-- **Glassmorphism Navigation**: Glassmorphic bottom navigation bar with top edge light beams and custom dark theme scrollbars.
+**Gyrox** is a high-performance, modern fitness & wellness desktop and web application featuring real-time exercise routines powered by **ExerciseDB**, animated exercise GIFs, dynamic dark/light mode, smooth micro-animations, interactive workout tracking, progress analytics, and custom modals.
 
 ---
 
-## 🚀 How to Launch Gyrox
+## 💻 Windows Executable (.exe)
+
+The application is pre-packaged and ready to run on Windows without needing Node.js or any dependencies installed:
+
+📍 **Executable File Path:**
+```
+dist/Gyrox-win32-x64/Gyrox.exe
+```
+
+### Quick Run:
+1. Open the repository folder.
+2. Go to **`dist/Gyrox-win32-x64/`**.
+3. Double-click **`Gyrox.exe`** to launch the standalone desktop app!
+
+---
+
+## ⚡ Features & Capabilities
+
+- **🏋️ Live ExerciseDB API & Animated GIFs**: Fetches 1,500+ real exercises across 6 major body part categories (Chest, Abs & Core, Arms, Back, Legs, Shoulders) complete with target muscle descriptions and step-by-step demonstration GIFs.
+- **🌙 Dark Mode & Light Mode**: Toggle seamlessly between dark and light themes with saved preference in `localStorage`.
+- **✨ Lucide Icons**: Modern SVG icon integration across top header, navigation bar, and settings.
+- **📱 Responsive & Skeleton Loading**: Smooth shimmer loading states while fetching exercise data and routines.
+- **💧 Hydration Tracker**: Real-time water intake logging (+250ml quick add) with visual progress updates.
+- **📊 Progress & Analytics**: Interactive workout completion metrics, weekly history, step tracking, and streak logs.
+- **🚀 Electron Desktop Desktop App**: Fast, native desktop shell powered by Electron.
+
+---
+
+## 🚀 How to Launch & Build
 
 ### Option 1: Run Pre-Built Windows Executable (.exe)
-You can launch the standalone desktop app directly without installing Node.js or dependencies:
-
-1. Navigate to `dist/Gyrox-win32-x64/`
-2. Double-click **`Gyrox.exe`** (or run `.\dist\Gyrox-win32-x64\Gyrox.exe` in PowerShell/CMD).
+Double-click **`dist/Gyrox-win32-x64/Gyrox.exe`** or execute via terminal:
+```powershell
+.\dist\Gyrox-win32-x64\Gyrox.exe
+```
 
 ---
 
 ### Option 2: Run Desktop App in Development Mode (Electron)
-If you want to run or modify the application locally:
-
 ```bash
-# 1. Clone the repository
-git clone https://github.com/Benjaminax/-benjamin-acheampong-gyrox.git
-cd -benjamin-acheampong-gyrox
-
-# 2. Install dependencies
+# 1. Install dependencies
 npm install
 
-# 3. Start the Gyrox Desktop Application
+# 2. Start the Gyrox Desktop Application
 npm start
 ```
 
 ---
 
-### Option 3: Launch Web Browser Version
-You can run the web version directly in any web browser:
-
-1. Open **`index.html`** in your favorite browser (Chrome, Edge, Firefox, Safari).
-2. Alternatively, serve it via Python or Node:
-   ```bash
-   python -m http.server 8085
-   ```
-   Then open `http://localhost:8085/index.html`.
+### Option 3: Launch Web Version
+Open **`index.html`** in any modern web browser or serve locally:
+```bash
+npx serve -p 3000 .
+```
 
 ---
 
-### Option 4: Build Desktop Executable (.exe) from Source
-To package the app into a standalone Windows `.exe` bundle:
-
+### Option 4: Re-Package / Re-Build Executable (.exe)
+To package code updates into `dist/Gyrox-win32-x64/Gyrox.exe`:
 ```bash
 npm run build:exe
 ```
-The output executable will be created at `dist/Gyrox-win32-x64/Gyrox.exe`.
 
 ---
 
 ## 📁 Repository Structure
 
 ```
-├── index.html              # Main web application & mobile UI
+├── index.html              # Core application UI, ExerciseDB integration, dark mode
 ├── main.js                 # Electron main process entry point
-├── package.json            # Dependencies and npm scripts
-├── dist/                   # Packaged Windows desktop app (.exe)
+├── package.json            # Build scripts & dependencies
+├── dist/                   # Built desktop application
 │   └── Gyrox-win32-x64/
-│       └── Gyrox.exe
-└── README.md               # Instructions & documentation
+│       └── Gyrox.exe       # Standalone Windows Executable (.exe)
+└── README.md               # Documentation & usage guide
 ```
 
 ---
 
 ## 🛠️ Built With
 
-- **Core**: HTML5, Vanilla CSS3 (Custom Design System), Modern JavaScript (ES6+)
-- **Desktop Framework**: Electron.js v44
+- **Core Application**: HTML5, CSS3 Custom Properties, Modern Vanilla JavaScript (ES6+)
+- **Data & Media**: ExerciseDB API & Free Animated Exercise GIFs
+- **Icons**: Lucide Icons
+- **Desktop Engine**: Electron v44
 - **Packaging**: `@electron/packager`
+
